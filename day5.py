@@ -43,7 +43,7 @@ def p2():
         phrom = int(re.search('from (.*) to', inst).group(1))
         to = int(re.search('to (.*)', inst).group(1))
 
-        for i in range(0, amount, 1):   # phrom wird gepopt, to wird gepusht       
+        for i in range(0, amount, 1):   
             element = stacks[phrom-1][0]
             stacks[phrom-1].pop(0)
             stacks[to-1].insert(i,element)

@@ -48,9 +48,28 @@ def traverse(dict):
     
     return total
 
-total_sizes = []
-for elem in folders:
-    if traverse(elem) <= 100000:
-        total_sizes.append(traverse(elem))
+def p1():
+    total_sizes = []
+    for elem in folders:
+        if traverse(elem) <= 100000:
+            total_sizes.append(traverse(elem))
 
-print(f'Ergebnis Part 1: {sum(total_sizes)}')
+    return(f'Ergebnis Part 1: {sum(total_sizes)}')
+
+
+def p2():
+    total_sizes = []
+    greater_sizes = []
+    unused_space = 70000000 - traverse(folders[0])
+    needed = 30000000 - unused_space
+    for elem in folders:
+        total_sizes.append(traverse(elem))
+    
+    for elem in total_sizes:
+        if elem >= needed:
+            greater_sizes.append(elem)
+    
+    nearest = min(greater_sizes, key=lambda v: abs(v-needed))
+    return(f'Ergebnis Part 2: {nearest}')
+
+print(f'{p1()}\n{p2()}')
