@@ -69,7 +69,7 @@ def p2():
         if elem >= needed:
             greater_sizes.append(elem)
     
-    nearest = min(greater_sizes, key=lambda v: abs(v-needed))
+    nearest = min(greater_sizes)
     return(f'Ergebnis Part 2: {nearest}')
 
 print(f'{p1()}\n{p2()}')
