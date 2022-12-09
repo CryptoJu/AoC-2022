@@ -1,4 +1,4 @@
-import numpy as np
+
 from functools import reduce
 with open('input/d8_input.txt','r') as f:
     pinput = f.readlines()
@@ -18,7 +18,7 @@ def p1():
             cur = int(trees[i][j])
             left = trees[i][:j]
             right = trees[i][j+1:]
-            right = [int(x) for x in right]
+            right = [int(x) for x in right] # convert each element to int
             left = [int(x) for x in left]
             down, up = [], []
 
@@ -27,7 +27,7 @@ def p1():
             for elem in trees[i+1:]:
                 down.append(int(elem[j]))
 
-            if up == [] or down == [] or right == [] or left == []: # edges
+            if not (up and down and left and right): # edges
                 visible += 1
                 continue
 
@@ -56,9 +56,6 @@ def p2():
             for elem in trees[i+1:]:
                 down.append(int(elem[j]))
 
-            #print(f'Current Element: {cur}')
-            #print(np.matrix(trees))
-            #print(f'up: {up} Left: {left} down: {down}, Right: {right}, , ')
             if up == [] or down == [] or right == [] or left == []:
                 continue        # skip edgy edges
 
@@ -108,13 +105,8 @@ def p2():
             else:
                 value = 1
             scenic.append(value)
-            value = 0
         
             ergebnis.append(reduce(lambda x, y: x*y, scenic))
     return(max(ergebnis))        
     
 print(f'Ergebnis Part 1: {p1()}\nErgebnis Part 2: {p2()}')
-            
-            
-
-        
